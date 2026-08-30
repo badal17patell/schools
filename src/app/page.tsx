@@ -41,7 +41,7 @@ export default function Home() {
               +91 9209169690
             </a>
             <Button variant="outline" size="sm" className="magnum-outline-button" onClick={() => router.push("/track-order")}>Track Order</Button>
-            <Button variant="outline" size="sm" className="magnum-gold-button" onClick={() => router.push("/login")}>Login</Button>
+            <Button size="sm" className="magnum-gold-button border border-amber-200/80 shadow-[0_0_24px_rgba(251,191,36,0.18)]" onClick={() => router.push("/login")}>Login</Button>
           </div>
         </div>
       </header>
