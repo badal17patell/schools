@@ -1,6 +1,5 @@
 "use client";
 
-import { Cinzel, Manrope } from "next/font/google";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { states, getSchoolsByState } from "@/data/schools";
@@ -14,9 +13,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Image from "next/image";
-
-const cinzel = Cinzel({ subsets: ["latin"], weight: ["600", "700"] });
-const manrope = Manrope({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
 export default function Home() {
   const router = useRouter();
@@ -32,9 +28,9 @@ export default function Home() {
   };
 
   return (
-    <div className={`${manrope.className} min-h-screen bg-[#050505] text-white`}>
+    <div className="magnum-page">
       {/* Header */}
-      <header className="border-b border-amber-400/20 bg-black/90 backdrop-blur">
+      <header className="magnum-header">
         <div className="container mx-auto flex flex-col gap-4 px-4 py-4 md:flex-row md:items-center md:justify-between">
           <BrandLogo size={52} />
           <div className="flex flex-wrap items-center gap-3 md:gap-4">
@@ -44,8 +40,8 @@ export default function Home() {
               </svg>
               +91 9209169690
             </a>
-            <Button variant="outline" size="sm" className="border-amber-400/40 bg-transparent text-amber-200 hover:bg-amber-400/10 hover:text-amber-100" onClick={() => router.push("/track-order")}>Track Order</Button>
-            <Button variant="outline" size="sm" className="border-amber-300 bg-amber-300 text-black hover:bg-amber-200 hover:text-black" onClick={() => router.push("/login")}>Login</Button>
+            <Button variant="outline" size="sm" className="magnum-outline-button" onClick={() => router.push("/track-order")}>Track Order</Button>
+            <Button variant="outline" size="sm" className="magnum-gold-button" onClick={() => router.push("/login")}>Login</Button>
           </div>
         </div>
       </header>
@@ -59,7 +55,7 @@ export default function Home() {
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.35em] text-amber-300">
               Quality You Can Trust
             </p>
-            <h1 className={`${cinzel.className} mb-6 text-4xl font-bold leading-tight text-white md:text-6xl`}>
+            <h1 className="mb-6 text-4xl font-bold leading-tight text-white md:text-6xl">
               Magnum School Uniform
             </h1>
             <p className="mb-8 max-w-xl text-lg leading-8 text-zinc-300">
@@ -67,8 +63,8 @@ export default function Home() {
             </p>
 
             {/* School Selector */}
-            <div className="space-y-4 rounded-3xl border border-amber-300/20 bg-white/8 p-6 shadow-2xl shadow-amber-950/20 backdrop-blur">
-              <h2 className={`${cinzel.className} mb-4 text-xl font-semibold text-amber-200`}>Select Your School</h2>
+            <div className="magnum-panel space-y-4 border-amber-300/20 bg-white/8 p-6 shadow-2xl shadow-amber-950/20">
+              <h2 className="mb-4 text-xl font-semibold text-amber-200">Select Your School</h2>
 
               <div className="space-y-4">
                 <div>
@@ -93,7 +89,7 @@ export default function Home() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="mb-1 block text-sm font-medium text-amber-100">
                     School
                   </label>
                   <Select
@@ -115,7 +111,7 @@ export default function Home() {
                 </div>
 
                 <Button
-                  className="w-full bg-amber-300 text-black hover:bg-amber-200"
+                  className="magnum-gold-button w-full"
                   onClick={handleStartShopping}
                   disabled={!selectedSchool}
                 >
@@ -141,15 +137,15 @@ export default function Home() {
                 </div>
                 <div className="grid grid-cols-1 gap-4 text-sm text-amber-100 sm:grid-cols-3">
                   <div className="rounded-2xl border border-amber-300/15 bg-black/30 p-4 text-center">
-                    <p className={`${cinzel.className} text-2xl text-amber-300`}>100+</p>
+                    <p className="text-2xl text-amber-300">100+</p>
                     <p className="mt-1 text-zinc-300">Schools served</p>
                   </div>
                   <div className="rounded-2xl border border-amber-300/15 bg-black/30 p-4 text-center">
-                    <p className={`${cinzel.className} text-2xl text-amber-300`}>Premium</p>
+                    <p className="text-2xl text-amber-300">Premium</p>
                     <p className="mt-1 text-zinc-300">Uniform quality</p>
                   </div>
                   <div className="rounded-2xl border border-amber-300/15 bg-black/30 p-4 text-center">
-                    <p className={`${cinzel.className} text-2xl text-amber-300`}>Fast</p>
+                    <p className="text-2xl text-amber-300">Fast</p>
                     <p className="mt-1 text-zinc-300">Order support</p>
                   </div>
                 </div>
@@ -170,7 +166,7 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h3 className={`${cinzel.className} mb-2 text-lg font-semibold text-amber-200`}>Quality Products</h3>
+              <h3 className="mb-2 text-lg font-semibold text-amber-200">Quality Products</h3>
               <p className="text-zinc-300">Premium uniforms crafted to match school standards and daily comfort.</p>
             </div>
             <div className="rounded-3xl border border-amber-300/15 bg-white/5 p-6 text-center">
@@ -179,7 +175,7 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className={`${cinzel.className} mb-2 text-lg font-semibold text-amber-200`}>Fast Delivery</h3>
+              <h3 className="mb-2 text-lg font-semibold text-amber-200">Fast Delivery</h3>
               <p className="text-zinc-300">Responsive dispatch and order updates that keep parents informed.</p>
             </div>
             <div className="rounded-3xl border border-amber-300/15 bg-white/5 p-6 text-center">
@@ -188,7 +184,7 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                 </svg>
               </div>
-              <h3 className={`${cinzel.className} mb-2 text-lg font-semibold text-amber-200`}>Secure Payment</h3>
+              <h3 className="mb-2 text-lg font-semibold text-amber-200">Secure Payment</h3>
               <p className="text-zinc-300">Trusted checkout with clean order confirmation and tracking details.</p>
             </div>
           </div>
@@ -200,7 +196,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <h3 className={`${cinzel.className} mb-4 text-lg font-semibold text-amber-300`}>Information</h3>
+              <h3 className="mb-4 text-lg font-semibold text-amber-300">Information</h3>
               <ul className="space-y-2">
                 <li><a href="/about" className="text-zinc-300 hover:text-amber-300">About Us</a></li>
                 <li><a href="/terms" className="text-zinc-300 hover:text-amber-300">Terms and Conditions</a></li>
@@ -210,7 +206,7 @@ export default function Home() {
               </ul>
             </div>
             <div>
-              <h3 className={`${cinzel.className} mb-4 text-lg font-semibold text-amber-300`}>Contact Us</h3>
+              <h3 className="mb-4 text-lg font-semibold text-amber-300">Contact Us</h3>
               <ul className="space-y-2">
                 <li className="flex items-center gap-2 text-zinc-300">
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -229,7 +225,7 @@ export default function Home() {
               </ul>
             </div>
             <div>
-              <h3 className={`${cinzel.className} mb-4 text-lg font-semibold text-amber-300`}>Connect With Us</h3>
+              <h3 className="mb-4 text-lg font-semibold text-amber-300">Connect With Us</h3>
               <div className="flex gap-4">
                 <a href="#" className="text-zinc-300 hover:text-amber-300">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -239,7 +235,7 @@ export default function Home() {
               </div>
             </div>
             <div>
-              <h3 className={`${cinzel.className} mb-4 text-lg font-semibold text-amber-300`}>Track Order</h3>
+              <h3 className="mb-4 text-lg font-semibold text-amber-300">Track Order</h3>
               <p className="text-sm text-gray-400 mb-2">Enter your order number to track</p>
               <div className="flex gap-2">
                 <input
@@ -247,7 +243,7 @@ export default function Home() {
                   placeholder="Order Number"
                   className="flex-1 rounded border border-amber-300/20 bg-zinc-900 px-3 py-2 text-sm text-white"
                 />
-                <Button size="sm" className="bg-amber-300 text-black hover:bg-amber-200">Track</Button>
+                <Button size="sm" className="magnum-gold-button">Track</Button>
               </div>
             </div>
           </div>

@@ -3,8 +3,8 @@ import { BrandLogo } from "@/components/brand-logo";
 
 export default function PrivacyPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow-sm">
+    <div className="magnum-page">
+      <header className="magnum-header">
         <div className="container mx-auto px-4 py-4">
           <BrandLogo size={48} />
         </div>
@@ -14,21 +14,21 @@ export default function PrivacyPage() {
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold mb-8">Privacy Policy</h1>
 
-          <Card className="mb-6">
+          <Card className="magnum-panel mb-6 border-amber-300/15 bg-white/5 text-white">
             <CardContent className="p-8">
               <h2 className="text-2xl font-semibold mb-4">Information We Collect</h2>
-              <p className="text-gray-700 mb-4">
+              <p className="magnum-copy mb-4">
                 We collect information you provide directly when you create an account, place an order, or contact us.
                 This may include your name, email address, phone number, shipping address, and payment information.
               </p>
             </CardContent>
           </Card>
 
-          <Card className="mb-6">
+          <Card className="magnum-panel mb-6 border-amber-300/15 bg-white/5 text-white">
             <CardContent className="p-8">
               <h2 className="text-2xl font-semibold mb-4">How We Use Your Information</h2>
-              <p className="text-gray-700 mb-4">We use the information we collect to:</p>
-              <ul className="list-disc pl-6 space-y-2 text-gray-700">
+              <p className="magnum-copy mb-4">We use the information we collect to:</p>
+              <ul className="magnum-copy list-disc pl-6 space-y-2">
                 <li>Process and fulfill your orders</li>
                 <li>Communicate with you about your orders and account</li>
                 <li>Provide customer support</li>
@@ -38,23 +38,23 @@ export default function PrivacyPage() {
             </CardContent>
           </Card>
 
-          <Card className="mb-6">
+          <Card className="magnum-panel mb-6 border-amber-300/15 bg-white/5 text-white">
             <CardContent className="p-8">
               <h2 className="text-2xl font-semibold mb-4">Information Sharing</h2>
-              <p className="text-gray-700 mb-4">
+              <p className="magnum-copy mb-4">
                 We do not sell or rent your personal information to third parties. We may share your information with:
               </p>
-              <ul className="list-disc pl-6 space-y-2 text-gray-700">
+              <ul className="magnum-copy list-disc pl-6 space-y-2">
                 <li>Service providers who assist in our operations (shipping, payment processing)</li>
                 <li>Law enforcement when required by law</li>
               </ul>
             </CardContent>
           </Card>
 
-          <Card className="mb-6">
+          <Card className="magnum-panel mb-6 border-amber-300/15 bg-white/5 text-white">
             <CardContent className="p-8">
               <h2 className="text-2xl font-semibold mb-4">Data Security</h2>
-              <p className="text-gray-700 mb-4">
+              <p className="magnum-copy mb-4">
                 We implement appropriate security measures to protect your personal information against unauthorized
                 access, alteration, disclosure, or destruction. All payment transactions are encrypted using SSL
                 technology.
@@ -62,10 +62,10 @@ export default function PrivacyPage() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="magnum-panel-strong border-amber-300/20 text-white">
             <CardContent className="p-8">
               <h2 className="text-2xl font-semibold mb-4">Contact Us</h2>
-              <p className="text-gray-700">
+              <p className="magnum-copy">
                 If you have any questions about this Privacy Policy, please contact us at:
                 <br />
                 Email: magnum_schools@gmail.com

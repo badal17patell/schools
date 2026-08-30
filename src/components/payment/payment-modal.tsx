@@ -29,16 +29,16 @@ export default function PaymentModal({
 
   if (!orderId) {
     return (
-      <Card className="p-8 text-center">
+      <Card className="magnum-panel p-8 text-center text-white">
         <CardHeader>
           <CardTitle>Payment</CardTitle>
         </CardHeader>
         <CardContent>
           <h3 className="text-xl font-bold mb-4">Checkout</h3>
-          <p className="text-gray-600 mb-6">Total: ₹{totalPrice}</p>
+          <p className="magnum-copy mb-6">Total: ₹{totalPrice}</p>
           <Button
             onClick={handlePayment}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+            className="magnum-gold-button w-full"
           >
             Pay with Razorpay
           </Button>

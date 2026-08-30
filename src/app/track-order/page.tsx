@@ -59,8 +59,8 @@ export default function TrackOrderPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow-sm">
+    <div className="magnum-page">
+      <header className="magnum-header">
         <div className="container mx-auto px-4 py-4">
           <BrandLogo size={48} />
         </div>
@@ -87,32 +87,34 @@ export default function TrackOrderPage() {
             </Card>
           )}
 
-          <Card className="mb-8">
+          <Card className="magnum-panel mb-8 border-amber-300/20 bg-white/5 text-white">
             <CardHeader>
               <CardTitle>Enter Order Details</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium mb-1">Order Number</label>
+                  <label className="mb-1 block text-sm font-medium text-amber-100">Order Number</label>
                   <Input
                     type="text"
                     placeholder="Enter your order number"
                     value={orderNumber}
                     onChange={(e) => setOrderNumber(e.target.value)}
+                    className="border-amber-300/20 bg-white/5 text-white"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">Email Address</label>
+                  <label className="mb-1 block text-sm font-medium text-amber-100">Email Address</label>
                   <Input
                     type="email"
                     placeholder="Enter your email address"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    className="border-amber-300/20 bg-white/5 text-white"
                   />
                 </div>
                 <Button
-                  className="w-full bg-blue-600 hover:bg-blue-700"
+                  className="magnum-gold-button w-full"
                   onClick={handleTrack}
                   disabled={!orderNumber || !email}
                 >
@@ -123,7 +125,7 @@ export default function TrackOrderPage() {
           </Card>
 
           {trackingResult && (
-            <Card>
+            <Card className="magnum-panel border-amber-300/20 bg-white/5 text-white">
               <CardHeader>
                 <CardTitle>Order Status</CardTitle>
               </CardHeader>
@@ -135,7 +137,7 @@ export default function TrackOrderPage() {
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="font-medium">Status:</span>
-                    <Badge className="bg-green-600">{trackingResult.status}</Badge>
+                    <Badge className="bg-amber-300 text-black">{trackingResult.status}</Badge>
                   </div>
                   {trackingResult.paymentId && (
                     <div className="flex justify-between items-center">
@@ -160,7 +162,7 @@ export default function TrackOrderPage() {
             </Card>
           )}
 
-          <div className="mt-8 text-center text-gray-600">
+          <div className="magnum-copy mt-8 text-center">
             <p>Need help? Contact our customer support:</p>
             <p className="font-semibold mt-2">+91 9209169690</p>
             <p>magnum_schools@gmail.com</p>

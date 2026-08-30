@@ -18,12 +18,12 @@ export default function CartPage() {
 
   if (totalItems === 0) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="magnum-page flex items-center justify-center px-4">
         <div className="text-center">
           <div className="text-6xl mb-4">🛒</div>
           <h1 className="text-2xl font-bold mb-4">Your Cart is Empty</h1>
-          <p className="text-gray-600 mb-8">Add some products to get started!</p>
-          <Button onClick={() => router.push("/")}>Continue Shopping</Button>
+          <p className="magnum-copy mb-8">Add some products to get started!</p>
+          <Button className="magnum-gold-button" onClick={() => router.push("/")}>Continue Shopping</Button>
         </div>
       </div>
     );
@@ -126,12 +126,12 @@ export default function CartPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="magnum-page">
       {/* Header */}
-      <header className="bg-white shadow-sm sticky top-0 z-50">
+      <header className="magnum-header">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <BrandLogo size={48} />
-          <Button variant="outline" size="sm" onClick={() => router.push("/")}>
+          <Button variant="outline" size="sm" className="magnum-outline-button" onClick={() => router.push("/")}>
             Continue Shopping
           </Button>
         </div>
@@ -144,23 +144,24 @@ export default function CartPage() {
           {/* Cart Items */}
           <div className="lg:col-span-2 space-y-4">
             {items.map((item) => (
-              <Card key={`${item.productId}-${item.size}`}>
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-4">
-                    <div className="bg-gray-200 w-24 h-24 flex items-center justify-center rounded relative">
-                      <span className="text-gray-400">Image</span>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-lg">{item.name}</h3>
-                      {item.size && (
-                        <p className="text-sm text-gray-600">Size: {item.size}</p>
-                      )}
-                      <p className="text-xl font-bold text-blue-600 mt-2">₹{item.price}</p>
-                    </div>
+                <Card key={`${item.productId}-${item.size}`} className="magnum-panel border-amber-300/15 bg-white/5 text-white">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-4">
+                      <div className="relative flex h-24 w-24 items-center justify-center rounded bg-white/10">
+                        <span className="text-zinc-500">Image</span>
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-lg">{item.name}</h3>
+                        {item.size && (
+                          <p className="text-sm text-zinc-400">Size: {item.size}</p>
+                        )}
+                        <p className="mt-2 text-xl font-bold text-amber-300">₹{item.price}</p>
+                      </div>
                     <div className="flex items-center gap-2">
                       <Button
                         variant="outline"
                         size="icon"
+                        className="border-amber-300/20 bg-transparent text-amber-100 hover:bg-amber-300/10"
                         onClick={() => updateQuantity(item.productId, item.quantity - 1, item.size)}
                       >
                         <Minus className="h-4 w-4" />
@@ -171,12 +172,13 @@ export default function CartPage() {
                         onChange={(e) =>
                           updateQuantity(item.productId, parseInt(e.target.value) || 0, item.size)
                         }
-                        className="w-16 text-center"
+                        className="w-16 border-amber-300/20 bg-white/5 text-center text-white"
                         min="1"
                       />
                       <Button
                         variant="outline"
                         size="icon"
+                        className="border-amber-300/20 bg-transparent text-amber-100 hover:bg-amber-300/10"
                         onClick={() => updateQuantity(item.productId, item.quantity + 1, item.size)}
                       >
                         <Plus className="h-4 w-4" />
@@ -188,7 +190,7 @@ export default function CartPage() {
                         variant="ghost"
                         size="sm"
                         onClick={() => removeFromCart(item.productId, item.size)}
-                        className="text-red-600 hover:text-red-700"
+                        className="text-red-400 hover:text-red-300"
                       >
                         <Trash2 className="h-4 w-4" />
                       </Button>
@@ -201,7 +203,7 @@ export default function CartPage() {
 
           {/* Order Summary */}
           <div>
-            <Card className="border-amber-200/80 shadow-lg shadow-amber-100/30">
+            <Card className="magnum-panel border-amber-300/20 bg-white/5 text-white shadow-lg shadow-black/30">
               <CardHeader>
                 <CardTitle>Order Summary</CardTitle>
               </CardHeader>
@@ -212,16 +214,16 @@ export default function CartPage() {
                 </div>
                 <div className="flex justify-between">
                   <span>Delivery Charges</span>
-                  <span className="text-green-600">FREE</span>
+                  <span className="text-emerald-400">FREE</span>
                 </div>
-                <div className="border-t pt-4 flex justify-between font-bold text-lg">
+                <div className="flex justify-between border-t border-amber-300/15 pt-4 text-lg font-bold">
                   <span>Total</span>
-                  <span>₹{totalPrice}</span>
+                  <span className="text-amber-300">₹{totalPrice}</span>
                 </div>
               </CardContent>
               <CardFooter className="flex flex-col gap-4">
                 <Button 
-                  className="w-full bg-amber-400 text-black hover:bg-amber-300" 
+                  className="magnum-gold-button w-full" 
                   onClick={handleCheckout}
                   disabled={isProcessing}
                 >
@@ -236,7 +238,7 @@ export default function CartPage() {
                 </Button>
                 <Button
                   variant="outline"
-                  className="w-full"
+                  className="magnum-outline-button w-full"
                   onClick={clearCart}
                   disabled={isProcessing}
                 >

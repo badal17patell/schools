@@ -71,23 +71,23 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4">
-      <Card className="w-full max-w-md">
+    <div className="magnum-page flex items-center justify-center px-4 py-12">
+      <Card className="magnum-panel w-full max-w-md border-amber-300/20 bg-black/50 text-white">
         <CardHeader className="text-center">
           <div className="mx-auto mb-4">
             <BrandLogo size={64} textClassName="text-3xl" />
           </div>
           <CardTitle className="text-2xl font-bold">Login to Magnum</CardTitle>
-          <p className="text-gray-600 mt-2">Choose your login method</p>
+          <p className="magnum-copy mt-2">Choose your login method</p>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="google" className="w-full">
-            <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="google">
+            <TabsList className="grid w-full grid-cols-2 border border-amber-300/15 bg-white/5">
+              <TabsTrigger value="google" className="text-zinc-300 data-[state=active]:bg-amber-300 data-[state=active]:text-black">
                 <Mail className="w-4 h-4 mr-2" />
                 Gmail
               </TabsTrigger>
-              <TabsTrigger value="phone">
+              <TabsTrigger value="phone" className="text-zinc-300 data-[state=active]:bg-amber-300 data-[state=active]:text-black">
                 <Phone className="w-4 h-4 mr-2" />
                 Phone
               </TabsTrigger>
@@ -96,17 +96,18 @@ export default function LoginPage() {
             <TabsContent value="google" className="mt-6">
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium mb-1">Gmail Address</label>
+                  <label className="mb-1 block text-sm font-medium text-amber-100">Gmail Address</label>
                   <Input
                     type="email"
                     placeholder="Enter your Gmail address"
                     value={gmail}
                     onChange={(e) => setGmail(e.target.value)}
+                    className="border-amber-300/20 bg-white/5 text-white"
                   />
                 </div>
                 <Button
                   onClick={handleGmailLogin}
-                  className="w-full bg-white hover:bg-gray-50 text-gray-900 border border-gray-300"
+                  className="magnum-gold-button w-full"
                   disabled={loading || !gmail}
                 >
                   <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
@@ -134,32 +135,34 @@ export default function LoginPage() {
 
             <TabsContent value="phone" className="mt-6 space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-1">Phone Number</label>
+                <label className="mb-1 block text-sm font-medium text-amber-100">Phone Number</label>
                 <Input
                   type="tel"
                   placeholder="Enter your phone number"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   disabled={showOtp}
+                  className="border-amber-300/20 bg-white/5 text-white"
                 />
               </div>
 
               {showOtp && (
                 <div>
-                  <label className="block text-sm font-medium mb-1">OTP</label>
+                  <label className="mb-1 block text-sm font-medium text-amber-100">OTP</label>
                   <Input
                     type="text"
                     placeholder="Enter OTP (123456)"
                     value={otp}
                     onChange={(e) => setOtp(e.target.value)}
+                    className="border-amber-300/20 bg-white/5 text-white"
                   />
-                  <p className="text-sm text-gray-600 mt-1">Demo OTP: 123456</p>
+                  <p className="mt-1 text-sm text-zinc-400">Demo OTP: 123456</p>
                 </div>
               )}
 
               <Button
                 onClick={handlePhoneLogin}
-                className="w-full bg-blue-600 hover:bg-blue-700"
+                className="magnum-gold-button w-full"
                 disabled={loading || !phone || (showOtp && !otp)}
               >
                 {loading ? "Verifying..." : showOtp ? "Verify OTP" : "Send OTP"}
@@ -168,11 +171,11 @@ export default function LoginPage() {
           </Tabs>
 
           {error && (
-            <p className="mt-4 text-sm text-red-600">{error}</p>
+            <p className="mt-4 text-sm text-red-400">{error}</p>
           )}
 
           <div className="mt-6 text-center">
-            <Button variant="link" onClick={() => router.push("/")}>
+            <Button variant="link" className="text-amber-300 hover:text-amber-200" onClick={() => router.push("/")}>
               Back to Home
             </Button>
           </div>

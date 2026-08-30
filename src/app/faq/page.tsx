@@ -38,8 +38,8 @@ export default function FAQPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow-sm">
+    <div className="magnum-page">
+      <header className="magnum-header">
         <div className="container mx-auto px-4 py-4">
           <BrandLogo size={48} />
         </div>
@@ -51,20 +51,20 @@ export default function FAQPage() {
 
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <Card key={index}>
+              <Card key={index} className="magnum-panel border-amber-300/15 bg-white/5 text-white">
                 <CardContent className="p-6">
                   <h3 className="text-lg font-semibold mb-2">{faq.question}</h3>
-                  <p className="text-gray-700">{faq.answer}</p>
+                  <p className="magnum-copy">{faq.answer}</p>
                 </CardContent>
               </Card>
             ))}
           </div>
 
-          <Card className="mt-8 bg-blue-50">
+          <Card className="magnum-panel-strong mt-8 border-amber-300/20 text-white">
             <CardContent className="p-8 text-center">
               <h3 className="text-xl font-semibold mb-4">Still have questions?</h3>
-              <p className="text-gray-700 mb-4">Our customer support team is here to help you.</p>
-              <p className="text-gray-700">
+              <p className="magnum-copy mb-4">Our customer support team is here to help you.</p>
+              <p className="magnum-copy">
                 Call us: +91 9209169690<br />
                 Email: magnum_schools@gmail.com
               </p>
