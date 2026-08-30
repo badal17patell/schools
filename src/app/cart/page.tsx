@@ -13,6 +13,7 @@ export default function CartPage() {
   const { items, removeFromCart, updateQuantity, totalItems, totalPrice, clearCart } = useCart();
   const [isProcessing, setIsProcessing] = useState(false);
   const [orderId, setOrderId] = useState<string | null>(null);
+  const [paymentId, setPaymentId] = useState<string | null>(null);
 
   if (totalItems === 0) {
     return (
@@ -71,6 +72,8 @@ export default function CartPage() {
             handler: function (response: any) {
               const paymentId = response.razorpay_payment_id;
               const rzpOrderId = response.razorpay_order_id;
+              setOrderId(rzpOrderId);
+              setPaymentId(paymentId);
               const orderData = {
                 orderId: rzpOrderId,
                 paymentId: paymentId,
@@ -86,7 +89,10 @@ export default function CartPage() {
               };
               sessionStorage.setItem("lastOrder", JSON.stringify(orderData));
               clearCart();
-              router.push(`/track-order?orderId=${rzpOrderId}&paymentId=${paymentId}`);
+              setIsProcessing(false);
+              window.setTimeout(() => {
+                router.push(`/track-order?orderId=${rzpOrderId}&paymentId=${paymentId}`);
+              }, 1800);
             },
             modal: {
               ondismiss: function () {
@@ -241,8 +247,11 @@ export default function CartPage() {
             </Card>
             
             {orderId && (
-              <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg text-sm text-green-800">
-                Order created: {orderId}
+              <div className="mt-4 rounded-lg border border-green-200 bg-green-50 p-4 text-green-900">
+                <p className="text-sm font-medium text-green-700">Payment successful</p>
+                <p className="mt-2 text-lg font-semibold">Order ID: {orderId}</p>
+                {paymentId && <p className="mt-1 text-sm text-green-700">Payment ID: {paymentId}</p>}
+                <p className="mt-2 text-sm text-green-700">Redirecting to `Track Order`...</p>
               </div>
             )}
           </div>
