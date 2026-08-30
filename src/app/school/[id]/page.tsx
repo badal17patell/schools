@@ -11,6 +11,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useCart } from "@/context/CartContext";
+import { Minus, Plus } from "lucide-react";
 import Image from "next/image";
 
 export default function SchoolPage() {
@@ -20,7 +21,7 @@ export default function SchoolPage() {
   const school = getSchoolById(schoolId);
   const allProducts = getProductsBySchool(schoolId);
   const [selectedSize, setSelectedSize] = useState<{ [key: string]: string }>({});
-  const { addToCart } = useCart();
+  const { addToCart, items, totalItems, updateQuantity, removeFromCart } = useCart();
 
   if (!school) {
     return (
@@ -49,6 +50,66 @@ export default function SchoolPage() {
     });
   };
 
+  const getSelectedSize = (product: (typeof allProducts)[0]) => selectedSize[product.id] || product.sizes?.[0];
+
+  const getCartQuantity = (product: (typeof allProducts)[0]) => {
+    const size = getSelectedSize(product);
+
+    return items.find((item) => item.productId === product.id && item.size === size)?.quantity || 0;
+  };
+
+  const handleQuantityChange = (product: (typeof allProducts)[0], nextQuantity: number) => {
+    const size = getSelectedSize(product);
+
+    if (nextQuantity <= 0) {
+      removeFromCart(product.id, size);
+      return;
+    }
+
+    updateQuantity(product.id, nextQuantity, size);
+  };
+
+  const renderCartAction = (product: (typeof allProducts)[0]) => {
+    const quantity = getCartQuantity(product);
+
+    if (quantity > 0) {
+      return (
+        <div className="flex items-center gap-3">
+          <Button
+            type="button"
+            variant="outline"
+            size="icon"
+            className="magnum-outline-button h-10 w-10"
+            onClick={() => handleQuantityChange(product, quantity - 1)}
+          >
+            <Minus className="h-4 w-4" />
+          </Button>
+          <div className="flex-1 rounded-xl border border-amber-300/15 bg-white/5 px-3 py-2 text-center text-sm font-semibold text-amber-100">
+            {quantity} in cart
+          </div>
+          <Button
+            type="button"
+            variant="outline"
+            size="icon"
+            className="magnum-outline-button h-10 w-10"
+            onClick={() => handleQuantityChange(product, quantity + 1)}
+          >
+            <Plus className="h-4 w-4" />
+          </Button>
+        </div>
+      );
+    }
+
+    return (
+      <Button
+        className="magnum-gold-button w-full"
+        onClick={() => handleAddToCart(product)}
+      >
+        Add to Cart
+      </Button>
+    );
+  };
+
   return (
     <div className="magnum-page">
       {/* Header */}
@@ -67,7 +128,7 @@ export default function SchoolPage() {
               Track Order
             </Button>
             <Button variant="outline" size="sm" className="magnum-outline-button" onClick={() => router.push("/cart")}>
-              Cart ({useCart().totalItems})
+              Cart ({totalItems})
             </Button>
             <Button variant="outline" size="sm" className="magnum-gold-button" onClick={() => router.push("/login")}>Login</Button>
           </div>
@@ -139,12 +200,7 @@ export default function SchoolPage() {
                     </div>
                   </CardContent>
                   <CardFooter className="p-4 pt-0">
-                    <Button
-                      className="magnum-gold-button w-full"
-                      onClick={() => handleAddToCart(product)}
-                    >
-                      Add to Cart
-                    </Button>
+                    {renderCartAction(product)}
                   </CardFooter>
                 </Card>
               ))}
@@ -176,12 +232,7 @@ export default function SchoolPage() {
                     </div>
                   </CardContent>
                   <CardFooter className="p-4 pt-0">
-                    <Button
-                      className="magnum-gold-button w-full"
-                      onClick={() => handleAddToCart(product)}
-                    >
-                      Add to Cart
-                    </Button>
+                    {renderCartAction(product)}
                   </CardFooter>
                 </Card>
               ))}
@@ -213,12 +264,7 @@ export default function SchoolPage() {
                     </div>
                   </CardContent>
                   <CardFooter className="p-4 pt-0">
-                    <Button
-                      className="magnum-gold-button w-full"
-                      onClick={() => handleAddToCart(product)}
-                    >
-                      Add to Cart
-                    </Button>
+                    {renderCartAction(product)}
                   </CardFooter>
                 </Card>
               ))}
