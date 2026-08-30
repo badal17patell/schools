@@ -41,8 +41,8 @@ export default function Home() {
               </svg>
               +91 7666 477 477
             </a>
-            <Button variant="outline" size="sm">Track Order</Button>
-            <Button variant="outline" size="sm">Login</Button>
+            <Button variant="outline" size="sm" onClick={() => router.push("/track-order")}>Track Order</Button>
+            <Button variant="outline" size="sm" onClick={() => router.push("/login")}>Login</Button>
           </div>
         </div>
       </header>

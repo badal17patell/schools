@@ -6,21 +6,42 @@ const handler = NextAuth({
     CredentialsProvider({
       name: "SchoolMart Login",
       credentials: {
-        email: { label: "Email", type: "email", placeholder: "user@school.in" },
-        password: { label: "Password", type: "password" },
+        loginMethod: { label: "Login Method", type: "text" },
+        email: { label: "Email", type: "email", placeholder: "user@gmail.com" },
+        phone: { label: "Phone", type: "tel", placeholder: "+91XXXXXXXXXX" },
+        otp: { label: "OTP", type: "text" },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) return null;
+        if (!credentials?.loginMethod) return null;
 
-        // Demo authentication - accept any credentials for testing
-        if (credentials.email.endsWith("@school.in") || credentials.email.endsWith("@gmail.com")) {
+        if (
+          credentials.loginMethod === "gmail" &&
+          credentials.email &&
+          credentials.email.endsWith("@gmail.com")
+        ) {
           return {
             id: "user_1",
-            name: "Patron",
+            name: credentials.email.split("@")[0],
             email: credentials.email,
             role: "patron",
           };
         }
+
+        if (
+          credentials.loginMethod === "phone" &&
+          credentials.phone &&
+          credentials.otp === "123456"
+        ) {
+          const phoneNumber = credentials.phone.replace(/\s+/g, "");
+
+          return {
+            id: `phone_${phoneNumber}`,
+            name: "Phone User",
+            email: `${phoneNumber}@phone.schoolmart.local`,
+            role: "patron",
+          };
+        }
+
         return null;
       },
     }),
