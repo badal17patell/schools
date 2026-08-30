@@ -69,9 +69,24 @@ export default function CartPage() {
             order_id: data.id,
             theme: { color: "#F37254" },
             handler: function (response: any) {
-              alert(`Payment successful! Payment ID: ${response.razorpay_payment_id}`);
+              const paymentId = response.razorpay_payment_id;
+              const rzpOrderId = response.razorpay_order_id;
+              const orderData = {
+                orderId: rzpOrderId,
+                paymentId: paymentId,
+                amount: Math.round(totalPrice * 100),
+                items: items.map((i) => ({
+                  name: i.name,
+                  quantity: i.quantity,
+                  price: i.price,
+                  size: i.size,
+                })),
+                date: new Date().toISOString(),
+                status: "Confirmed",
+              };
+              sessionStorage.setItem("lastOrder", JSON.stringify(orderData));
               clearCart();
-              router.push("/");
+              router.push(`/track-order?orderId=${rzpOrderId}&paymentId=${paymentId}`);
             },
             modal: {
               ondismiss: function () {
