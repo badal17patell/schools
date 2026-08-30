@@ -29,8 +29,8 @@ export function RazorpayButton({
           key: "rzp_test_TW0YkUTV5xTJG6",
           amount: amount,
           currency: "INR",
-          name: "SchoolMart",
-          description: "School Uniforms & Books Order",
+          name: "Magnum",
+          description: "Magnum School Uniform Order",
           order_id: orderId,
           theme: {
             color: "#F37254",
@@ -39,7 +39,7 @@ export function RazorpayButton({
             onPaymentSuccess(response.razorpay_payment_id);
           },
           notes: {
-            address: "SchoolMart",
+            address: "Magnum",
             contact: "+91 7666 477 477",
           },
         });

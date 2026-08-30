@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SchoolMart - School Uniforms & Books",
-  description: "Your one-stop shop for school uniforms and books for 100+ Indian schools",
+  title: "Magnum - School Uniform",
+  description: "Magnum School Uniform delivers quality uniforms you can trust.",
 };
 
 export default function RootLayout({

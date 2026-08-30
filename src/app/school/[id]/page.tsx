@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
+import { BrandLogo } from "@/components/brand-logo";
 import { getSchoolById, schools } from "@/data/schools";
 import { getProductsBySchool, getProductsByCategory } from "@/data/products";
 import { Button } from "@/components/ui/button";
@@ -54,9 +55,7 @@ export default function SchoolPage() {
       <header className="bg-white shadow-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <button onClick={() => router.push("/")} className="text-2xl font-bold text-blue-600">
-              SchoolMart
-            </button>
+            <BrandLogo size={48} />
             <div className="hidden md:flex items-center gap-2 text-sm text-gray-600">
               <span>{school.name}</span>
               <span>•</span>
@@ -70,7 +69,7 @@ export default function SchoolPage() {
             <Button variant="outline" size="sm" onClick={() => router.push("/cart")}>
               Cart ({useCart().totalItems})
             </Button>
-            <Button variant="outline" size="sm">Login</Button>
+            <Button variant="outline" size="sm" onClick={() => router.push("/login")}>Login</Button>
           </div>
         </div>
       </header>

@@ -1,11 +1,12 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { BrandLogo } from "@/components/brand-logo";
 
 export default function ReturnPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white shadow-sm">
         <div className="container mx-auto px-4 py-4">
-          <a href="/" className="text-2xl font-bold text-blue-600">SchoolMart</a>
+          <BrandLogo size={48} />
         </div>
       </header>
 
@@ -17,7 +18,7 @@ export default function ReturnPage() {
             <CardContent className="p-8">
               <h2 className="text-2xl font-semibold mb-4">7-Day Return Policy</h2>
               <p className="text-gray-700 mb-4">
-                At SchoolMart, we want you to be completely satisfied with your purchase. If you are not satisfied,
+                At Magnum, we want you to be completely satisfied with your purchase. If you are not satisfied,
                 you may return most items within 7 days of delivery for a full refund or exchange.
               </p>
             </CardContent>

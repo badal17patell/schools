@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { BrandLogo } from "@/components/brand-logo";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function AboutPage() {
@@ -6,7 +7,7 @@ export default function AboutPage() {
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white shadow-sm">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <a href="/" className="text-2xl font-bold text-blue-600">SchoolMart</a>
+          <BrandLogo size={48} />
         </div>
       </header>
 
@@ -17,7 +18,7 @@ export default function AboutPage() {
           <Card className="mb-8">
             <CardContent className="p-8">
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                SchoolMart is India's leading online platform for school uniforms and books,
+                Magnum is a trusted online destination for school uniforms,
                 serving over 100 prestigious schools across the country. We understand the
                 importance of quality education and the role that proper uniforms and study
                 materials play in a student's academic journey.
@@ -55,7 +56,7 @@ export default function AboutPage() {
             </Card>
           </div>
 
-          <h2 className="text-2xl font-bold mb-6">Why Choose SchoolMart?</h2>
+          <h2 className="text-2xl font-bold mb-6">Why Choose Magnum?</h2>
           <Card>
             <CardContent className="p-8">
               <ul className="space-y-4">
@@ -91,7 +92,7 @@ export default function AboutPage() {
 
       <footer className="bg-gray-900 text-white py-8 mt-16">
         <div className="container mx-auto px-4 text-center">
-          <p>© 2024 SchoolMart. All rights reserved.</p>
+          <p>© 2024 Magnum. All rights reserved.</p>
         </div>
       </footer>
     </div>

@@ -4,7 +4,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 const handler = NextAuth({
   providers: [
     CredentialsProvider({
-      name: "SchoolMart Login",
+      name: "Magnum Login",
       credentials: {
         loginMethod: { label: "Login Method", type: "text" },
         email: { label: "Email", type: "email", placeholder: "user@gmail.com" },
@@ -37,7 +37,7 @@ const handler = NextAuth({
           return {
             id: `phone_${phoneNumber}`,
             name: "Phone User",
-            email: `${phoneNumber}@phone.schoolmart.local`,
+            email: `${phoneNumber}@phone.magnum.local`,
             role: "patron",
           };
         }

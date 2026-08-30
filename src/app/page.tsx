@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { states, schools, getSchoolsByState } from "@/data/schools";
+import { BrandLogo } from "@/components/brand-logo";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -31,9 +32,7 @@ export default function Home() {
       {/* Header */}
       <header className="bg-white shadow-sm">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="text-2xl font-bold text-blue-600">SchoolMart</div>
-          </div>
+          <BrandLogo size={52} />
           <div className="flex items-center gap-4">
             <a href="tel:+91 7666 477 477" className="flex items-center gap-2 text-sm">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -52,10 +51,10 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              School Uniforms & Books
+              Magnum School Uniform
             </h1>
             <p className="text-lg text-gray-600 mb-8">
-              Your one-stop online shop for quality school uniforms and books for 100+ top Indian schools.
+              Quality school uniforms you can trust, with a simpler way for families to shop by school.
             </p>
 
             {/* School Selector */}
@@ -224,7 +223,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-            Copyright © 2024 SchoolMart. All rights reserved.
+            Copyright © 2024 Magnum. All rights reserved.
           </div>
         </div>
       </footer>

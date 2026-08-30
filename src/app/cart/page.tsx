@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { BrandLogo } from "@/components/brand-logo";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -65,8 +66,8 @@ export default function CartPage() {
             key: "rzp_test_TW0YkUTV5xTJG6",
             amount: Math.round(totalPrice * 100),
             currency: "INR",
-            name: "SchoolMart",
-            description: "School Uniforms & Books Order",
+            name: "Magnum",
+            description: "Magnum School Uniform Order",
             order_id: data.id,
             theme: { color: "#F37254" },
             handler: function (response: any) {
@@ -129,9 +130,7 @@ export default function CartPage() {
       {/* Header */}
       <header className="bg-white shadow-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <button onClick={() => router.push("/")} className="text-2xl font-bold text-blue-600">
-            SchoolMart
-          </button>
+          <BrandLogo size={48} />
           <Button variant="outline" size="sm" onClick={() => router.push("/")}>
             Continue Shopping
           </Button>
