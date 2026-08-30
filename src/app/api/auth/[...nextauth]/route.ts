@@ -1,29 +1,24 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import GoogleProvider from "next-auth/providers/google";
 
 const handler = NextAuth({
   providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID || "",
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
-    }),
     CredentialsProvider({
-      name: "Phone Number",
+      name: "SchoolMart Login",
       credentials: {
-        phone: { label: "Phone Number", type: "tel" },
-        otp: { label: "OTP", type: "text" },
+        email: { label: "Email", type: "email", placeholder: "user@school.in" },
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials?.phone) return null;
+        if (!credentials?.email || !credentials?.password) return null;
 
-        // For demo purposes, accept any phone number with OTP "123456"
-        if (credentials.otp === "123456") {
+        // Demo authentication - accept any credentials for testing
+        if (credentials.email.endsWith("@school.in") || credentials.email.endsWith("@gmail.com")) {
           return {
-            id: credentials.phone,
-            name: "User",
-            email: `${credentials.phone}@phone.user`,
-            phone: credentials.phone,
+            id: "user_1",
+            name: "Patron",
+            email: credentials.email,
+            role: "patron",
           };
         }
         return null;
@@ -39,13 +34,13 @@ const handler = NextAuth({
   callbacks: {
     async session({ session, token }) {
       if (token && session.user) {
-        (session.user as any).phone = token.phone;
+        (session.user as any).role = token.role;
       }
       return session;
     },
     async jwt({ token, user }) {
       if (user) {
-        token.phone = (user as any).phone;
+        token.role = (user as any).role;
       }
       return token;
     },
