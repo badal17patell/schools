@@ -99,13 +99,14 @@ export default function SchoolPage() {
               {uniforms.map((product) => (
                 <Card key={product.id} className="overflow-hidden hover:shadow-lg transition-shadow">
                   <CardHeader className="p-0">
-                    <div className="bg-gray-200 h-48 flex items-center justify-center">
+                    <div className="bg-gray-200 h-48 flex items-center justify-center relative">
                       <Image
-                        src="/next.svg"
+                        src={product.image}
                         alt={product.name}
-                        width={100}
-                        height={100}
-                        className="opacity-50"
+                        width={400}
+                        height={400}
+                        className="object-cover w-full h-full"
+                        unoptimized
                       />
                     </div>
                   </CardHeader>
@@ -156,13 +157,14 @@ export default function SchoolPage() {
               {books.map((product) => (
                 <Card key={product.id} className="overflow-hidden hover:shadow-lg transition-shadow">
                   <CardHeader className="p-0">
-                    <div className="bg-gray-200 h-48 flex items-center justify-center">
+                    <div className="bg-gray-200 h-48 flex items-center justify-center relative">
                       <Image
-                        src="/next.svg"
+                        src={product.image}
                         alt={product.name}
-                        width={100}
-                        height={100}
-                        className="opacity-50"
+                        width={400}
+                        height={400}
+                        className="object-cover w-full h-full"
+                        unoptimized
                       />
                     </div>
                   </CardHeader>
@@ -192,13 +194,14 @@ export default function SchoolPage() {
               {accessories.map((product) => (
                 <Card key={product.id} className="overflow-hidden hover:shadow-lg transition-shadow">
                   <CardHeader className="p-0">
-                    <div className="bg-gray-200 h-48 flex items-center justify-center">
+                    <div className="bg-gray-200 h-48 flex items-center justify-center relative">
                       <Image
-                        src="/next.svg"
+                        src={product.image}
                         alt={product.name}
-                        width={100}
-                        height={100}
-                        className="opacity-50"
+                        width={400}
+                        height={400}
+                        className="object-cover w-full h-full"
+                        unoptimized
                       />
                     </div>
                   </CardHeader>
