@@ -17,9 +17,14 @@ import Image from "next/image";
 export default function Home() {
   const router = useRouter();
   const [selectedState, setSelectedState] = useState<string>("");
+  const [selectedCity, setSelectedCity] = useState<string>("");
   const [selectedSchool, setSelectedSchool] = useState<string>("");
 
-  const filteredSchools = selectedState ? getSchoolsByState(selectedState) : [];
+  const stateSchools = selectedState ? getSchoolsByState(selectedState) : [];
+  const filteredCities = [...new Set(stateSchools.map((school) => school.city))].sort();
+  const filteredSchools = selectedCity
+    ? stateSchools.filter((school) => school.city === selectedCity)
+    : [];
 
   const handleStartShopping = () => {
     if (selectedSchool) {
@@ -71,10 +76,11 @@ export default function Home() {
                   <label className="mb-1 block text-sm font-medium text-amber-100">
                     State
                   </label>
-                  <Select value={selectedState} onValueChange={(value) => {
-                    setSelectedState(value);
-                    setSelectedSchool("");
-                  }}>
+                   <Select value={selectedState} onValueChange={(value) => {
+                     setSelectedState(value);
+                     setSelectedCity("");
+                     setSelectedSchool("");
+                   }}>
                     <SelectTrigger className="w-full border-amber-300/30 bg-black/30 text-white">
                       <SelectValue placeholder="Select State" />
                     </SelectTrigger>
@@ -90,12 +96,37 @@ export default function Home() {
 
                 <div>
                   <label className="mb-1 block text-sm font-medium text-amber-100">
+                    City
+                  </label>
+                  <Select
+                    value={selectedCity}
+                    onValueChange={(value) => {
+                      setSelectedCity(value);
+                      setSelectedSchool("");
+                    }}
+                    disabled={!selectedState}
+                  >
+                    <SelectTrigger className="w-full border-amber-300/30 bg-black/30 text-white">
+                      <SelectValue placeholder="Select City" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {filteredCities.map((city) => (
+                        <SelectItem key={city} value={city}>
+                          {city}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div>
+                  <label className="mb-1 block text-sm font-medium text-amber-100">
                     School
                   </label>
                   <Select
                     value={selectedSchool}
                     onValueChange={setSelectedSchool}
-                    disabled={!selectedState}
+                    disabled={!selectedCity}
                   >
                     <SelectTrigger className="w-full border-amber-300/30 bg-black/30 text-white">
                       <SelectValue placeholder="Select School" />
