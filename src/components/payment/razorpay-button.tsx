@@ -40,7 +40,7 @@ export function RazorpayButton({
           },
           notes: {
             address: "Magnum",
-            contact: "+91 7666 477 477",
+            contact: "+91 9209169690",
           },
         });
       } else {

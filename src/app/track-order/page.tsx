@@ -71,13 +71,16 @@ export default function TrackOrderPage() {
           <h1 className="text-4xl font-bold mb-8">Track Your Order</h1>
 
           {trackingResult && (
-            <Card className="mb-8 border-green-200 bg-green-50">
+            <Card className="mb-8 overflow-hidden border-amber-300/40 bg-gradient-to-r from-black via-zinc-950 to-amber-950 text-white shadow-xl">
               <CardContent className="pt-6">
-                <p className="text-sm font-medium text-green-700">Payment successful</p>
-                <p className="mt-2 text-lg font-semibold text-green-900">
+                <div className="mb-4 flex items-center gap-3">
+                  <BrandLogo size={56} textClassName="text-amber-300" />
+                </div>
+                <p className="text-sm font-medium uppercase tracking-[0.25em] text-amber-300">Payment successful</p>
+                <p className="mt-2 text-lg font-semibold text-white">
                   Your order ID is {trackingResult.orderNumber}
                 </p>
-                <p className="mt-1 text-sm text-green-700">
+                <p className="mt-1 text-sm text-zinc-300">
                   Use this order ID on this page anytime to track your order.
                 </p>
               </CardContent>
@@ -159,8 +162,8 @@ export default function TrackOrderPage() {
 
           <div className="mt-8 text-center text-gray-600">
             <p>Need help? Contact our customer support:</p>
-            <p className="font-semibold mt-2">+91 7666 477 477</p>
-            <p>wecare@schoolmart.in</p>
+            <p className="font-semibold mt-2">+91 9209169690</p>
+            <p>magnum_schools@gmail.com</p>
           </div>
         </div>
       </main>

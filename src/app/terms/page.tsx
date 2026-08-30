@@ -63,9 +63,9 @@ export default function TermsPage() {
               <p className="text-gray-700">
                 If you have any questions about these Terms and Conditions, please contact us at:
                 <br />
-                Email: wecare@schoolmart.in
+                Email: magnum_schools@gmail.com
                 <br />
-                Phone: +91 7666 477 477
+                Phone: +91 9209169690
               </p>
             </CardContent>
           </Card>

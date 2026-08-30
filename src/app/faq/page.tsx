@@ -65,8 +65,8 @@ export default function FAQPage() {
               <h3 className="text-xl font-semibold mb-4">Still have questions?</h3>
               <p className="text-gray-700 mb-4">Our customer support team is here to help you.</p>
               <p className="text-gray-700">
-                Call us: +91 7666 477 477<br />
-                Email: wecare@schoolmart.in
+                Call us: +91 9209169690<br />
+                Email: magnum_schools@gmail.com
               </p>
             </CardContent>
           </Card>

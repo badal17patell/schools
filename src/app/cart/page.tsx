@@ -69,7 +69,7 @@ export default function CartPage() {
             name: "Magnum",
             description: "Magnum School Uniform Order",
             order_id: data.id,
-            theme: { color: "#F37254" },
+            theme: { color: "#d4a63a" },
             handler: function (response: any) {
               const paymentId = response.razorpay_payment_id;
               const rzpOrderId = response.razorpay_order_id;
@@ -201,7 +201,7 @@ export default function CartPage() {
 
           {/* Order Summary */}
           <div>
-            <Card>
+            <Card className="border-amber-200/80 shadow-lg shadow-amber-100/30">
               <CardHeader>
                 <CardTitle>Order Summary</CardTitle>
               </CardHeader>
@@ -221,7 +221,7 @@ export default function CartPage() {
               </CardContent>
               <CardFooter className="flex flex-col gap-4">
                 <Button 
-                  className="w-full bg-blue-600 hover:bg-blue-700" 
+                  className="w-full bg-amber-400 text-black hover:bg-amber-300" 
                   onClick={handleCheckout}
                   disabled={isProcessing}
                 >
@@ -246,11 +246,14 @@ export default function CartPage() {
             </Card>
             
             {orderId && (
-              <div className="mt-4 rounded-lg border border-green-200 bg-green-50 p-4 text-green-900">
-                <p className="text-sm font-medium text-green-700">Payment successful</p>
+              <div className="mt-4 overflow-hidden rounded-2xl border border-amber-300/30 bg-gradient-to-r from-black via-zinc-950 to-amber-950 p-5 text-white shadow-xl">
+                <div className="mb-4 flex items-center gap-3">
+                  <BrandLogo size={58} textClassName="text-amber-300" />
+                </div>
+                <p className="text-sm font-medium uppercase tracking-[0.25em] text-amber-300">Payment successful</p>
                 <p className="mt-2 text-lg font-semibold">Order ID: {orderId}</p>
-                {paymentId && <p className="mt-1 text-sm text-green-700">Payment ID: {paymentId}</p>}
-                <p className="mt-2 text-sm text-green-700">Redirecting to `Track Order`...</p>
+                {paymentId && <p className="mt-1 text-sm text-zinc-300">Payment ID: {paymentId}</p>}
+                <p className="mt-2 text-sm text-zinc-300">Redirecting to `Track Order`...</p>
               </div>
             )}
           </div>

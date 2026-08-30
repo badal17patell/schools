@@ -68,9 +68,9 @@ export default function ReturnPage() {
               <p className="text-gray-700">
                 For return authorization or questions about our return policy, please contact us at:
                 <br />
-                Email: wecare@schoolmart.in
+                Email: magnum_schools@gmail.com
                 <br />
-                Phone: +91 7666 477 477 (Mon-Sat, 10:00am to 6:00pm)
+                Phone: +91 9209169690 (Mon-Sat, 10:00am to 6:00pm)
               </p>
             </CardContent>
           </Card>
